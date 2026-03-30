@@ -219,6 +219,8 @@ def backfill_legacy_delivery_rows(cursor) -> None:
 
 def init_saas_schema():
     """Create or upgrade the OSS broker alerts schema."""
+    db_parent = Path(DB_PATH).expanduser().resolve().parent
+    db_parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
