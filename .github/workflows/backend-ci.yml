@@ -24,4 +24,5 @@ jobs:
 
       - name: Run backend tests
         run: |
+          python -c "import src.main"
           python -m pytest tests/test_broker_alerts_api.py tests/test_run_full_latest_verification.py tests/test_special_source_parsers.py -q
