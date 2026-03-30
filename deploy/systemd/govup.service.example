@@ -1,0 +1,16 @@
+[Unit]
+Description=GovUp Broker Alerts API
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/apps/govup/backend
+EnvironmentFile=/home/ubuntu/apps/govup/backend/.env
+ExecStart=/home/ubuntu/apps/govup/.venv/bin/python -m uvicorn src.main:app --host 127.0.0.1 --port 8012
+Restart=always
+RestartSec=5
+TimeoutStopSec=20
+
+[Install]
+WantedBy=multi-user.target

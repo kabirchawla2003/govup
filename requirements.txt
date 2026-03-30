@@ -1,0 +1,8 @@
+fastapi==0.104.1
+uvicorn==0.24.0
+httpx==0.25.2
+beautifulsoup4==4.12.2
+apscheduler==3.10.4
+pydantic==2.11.7  # pinned for Python 3.13 wheel compatibility
+python-dotenv==1.0.1
+selenium==4.41.0
