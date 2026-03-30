@@ -821,7 +821,7 @@ async def replay_webhook_events(
 
 
 async def run_startup() -> None:
-    init_saas_schema()
+    init_api_schema()
 
 
 @asynccontextmanager
