@@ -40,14 +40,27 @@ Historical `main-v*` files are retained as development history and parser refere
 ## Quick start
 
 ```powershell
-python -m venv .venv
+.\install.ps1
 .\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-Copy-Item .env.example .env
+uvicorn src.main:app --reload
+```
+
+For POSIX shells:
+
+```bash
+chmod +x install.sh
+./install.sh
+source .venv/bin/activate
 uvicorn src.main:app --reload
 ```
 
 Open the API docs at `http://127.0.0.1:8000/docs`.
+
+## External prerequisites
+
+- Python 3.13 is the version used by the published CI workflow.
+- OpenClaw is optional and is not installed by `pip install -r requirements.txt`.
+- Install and run OpenClaw separately only if you need browser-backed live scraping for JS-rendered or anti-bot-sensitive sources.
 
 ## Configuration
 
@@ -74,6 +87,8 @@ The relevant environment variables are:
 If these are not set, the code may also fall back to a local OpenClaw config at `~/.openclaw/openclaw.json`.
 
 The repo also ignores local OpenClaw runtime logs under `.openclaw-run/`.
+
+If you are only consuming an existing local database or using the API/webhook layer, you can skip OpenClaw entirely.
 
 ## Main API surface
 
@@ -108,6 +123,8 @@ Run the main public test slices locally with:
 ```powershell
 .\.venv\Scripts\python.exe -m pytest tests/test_broker_alerts_api.py tests/test_run_full_latest_verification.py tests/test_special_source_parsers.py -q
 ```
+
+`pytest` is included in `requirements-dev.txt` and is installed by default by `install.ps1` and `install.sh`.
 
 ## Deployment
 

@@ -16,13 +16,13 @@ OPENCLAW_BROWSER_PROFILE=openclaw
 
 OpenClaw is only required for browser-backed live scraping paths. If you are serving an already-populated local database, the API can run without it.
 
+OpenClaw is an external prerequisite and is not installed from `requirements.txt`.
+
 ## Run locally
 
 ```powershell
-python -m venv .venv
+.\install.ps1
 .\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-Copy-Item .env.example .env
 uvicorn src.main:app --host 0.0.0.0 --port 8000
 ```
 
